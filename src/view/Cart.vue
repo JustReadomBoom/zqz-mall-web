@@ -41,7 +41,7 @@
     <van-submit-bar
       v-if="state.list.length > 0"
       class="submit-all van-hairline--top"
-      :price="total * 100"
+      :price="totalPrice * 100"
       button-text="结算"
       button-type="primary"
       @submit="onSubmit"
@@ -58,11 +58,13 @@
 </template>
 
 <script setup>
-import { reactive, onMounted } from 'vue'
+import { reactive, onMounted, computed} from 'vue'
 import { useRouter } from 'vue-router'
 import { useCartStore } from '@/stores/cart'
-import { showLoadingToast, closeToast, showFailToast } from 'vant'
-import { getCart, deleteCartItem, modifyCart } from '@/service/cart'
+import { showToast, showLoadingToast, closeToast, showFailToast } from 'vant'
+import navBar from '@/components/NavBar.vue'
+import sHeader from '@/components/SimpleHeader.vue'
+import { getCartPage, deleteCartItem, modifyCart } from '@/service/cart'
 
 const router = useRouter();
 const cart = useCartStore();
@@ -80,9 +82,9 @@ onMounted(() => {
 
 const init = async () => {
   showLoadingToast({ message: '加载中...', forbidClick: true });
-  const { data } = await getCart({ pageNumber: 1 })
-  state.list = data
-  state.result = data.map(item => item.cartItemId)
+  const { data } = await getCartPage({ pageNumber: 1 });
+  state.list = data.list;
+  state.result = data.list.map(item => item.cartItemId);
   closeToast();
 };
 
@@ -123,6 +125,14 @@ const onChange = async (value, detail) => {
   closeToast()
 };
 
+const totalPrice = computed(() => {
+  let sum = 0;
+  state.list.forEach(item => {
+    sum += item.goodsCount * item.sellingPrice;
+  });
+  return sum
+});
+
 const onSubmit = async () => {
   if (state.result.length == 0) {
     showFailToast('请选择商品进行结算');
@@ -153,7 +163,9 @@ const allCheck = () => {
   } else {
     state.result = [];
   }
-}
+};
+
+
 </script>
 
 <style lang="less">

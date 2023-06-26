@@ -1,7 +1,7 @@
 import axios from '../utils/axios'
 
 export function addCart(params) {
-  return axios.post('/shop-cart', params);
+  return axios.post('/shoppingCart/addGoods', params);
 }
 
 export function modifyCart(params) {
@@ -9,7 +9,11 @@ export function modifyCart(params) {
 }
 
 export function getCart(params) {
-  return axios.get('/shop-cart', { params });
+  return axios.get('/shoppingCart/list', { params });
+}
+
+export function getCartPage(params) {
+  return axios.get('/shoppingCart/listPage', { params });
 }
 
 export function deleteCartItem(id) {
@@ -17,6 +21,6 @@ export function deleteCartItem(id) {
 }
 
 export function getByCartItemIds(params) {
-  return axios.get('/shop-cart/settle', { params });
+  return axios.get('/shoppingCart/getShoppingCartItem', { params });
 }
 

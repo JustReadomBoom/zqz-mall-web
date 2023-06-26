@@ -24,7 +24,7 @@
       <header class="good-header">新品</header>
       <van-skeleton title :row="3" :loading="state.loading">
         <div class="good-box">
-          <div class="good-item" v-for="item in state.newGoodses" :key="item.goodsId" @click="goToDetail(item)">
+          <div class="good-item" v-for="item in state.newGoodList" :key="item.goodsId" @click="goToDetail(item)">
             <img :src="$filters.prefix(item.goodsCoverImg)" alt="">
             <div class="good-desc">
               <div class="title">{{ item.goodsName }}</div>
@@ -79,7 +79,7 @@ const state = reactive({
   isLogin: false, // 是否已登录3
   headerScroll: false, // 滚动透明判断
   hots: [],
-  newGoodses: [],
+  newGoodList: [],
   recommends: [],
   categoryList: [
     {
@@ -117,11 +117,11 @@ onMounted(async () => {
     message: '加载中...',
     forbidClick: true
   });
-  const { data } = await getHome()
+  const { data } = await getHome();
   state.swiperList = data.carousels;
-  state.newGoodses = data.newGoodses;
-  state.hots = data.hotGoodses;
-  state.recommends = data.recommendGoodses;
+  state.newGoodList = data.newGoods;
+  state.hots = data.hotGoods;
+  state.recommends = data.recommendGoods;
   state.loading = false;
   closeToast();
 });

@@ -72,9 +72,9 @@ onMounted(() => {
 
 const init = async () => {
   showLoadingToast({ message: '加载中...', forbidClick: true });
-  const { addressId, cartItemIds } = route.query
+  const { addressId, cartItemIds } = route.query;
   const _cartItemIds = cartItemIds ? JSON.parse(cartItemIds) : JSON.parse(getLocal('cartItemIds'))
-  setLocal('cartItemIds', JSON.stringify(_cartItemIds))
+  setLocal('cartItemIds', JSON.stringify(_cartItemIds));
   const { data: list } = await getByCartItemIds({ cartItemIds: _cartItemIds.join(',') })
   const { data: address } = addressId ? await getAddressDetail(addressId) : await getDefaultAddress()
   if (!address) {

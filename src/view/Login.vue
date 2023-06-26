@@ -75,6 +75,7 @@
 
 <script setup>
 import { reactive, ref } from 'vue'
+import vueImgVerify from '@/components/VueImageVerify.vue'
 import { login, register } from '@/service/user'
 import { setLocal } from '@/common/js/utils'
 import md5 from 'js-md5'

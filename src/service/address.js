@@ -21,7 +21,7 @@ export function getAddressList() {
 }
 
 export function getAddressDetail(id) {
-  return axios.get(`/address/${id}`)
+  return axios.get(`/address/getByAddressId/${id}`)
 }
 
 
