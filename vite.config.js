@@ -6,7 +6,7 @@ import { VantResolver } from 'unplugin-vue-components/resolvers'
 
 export default defineConfig({
   server: {
-    port: 8080
+    port: 8866
   },
   plugins: [
     vue(),

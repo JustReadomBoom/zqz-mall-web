@@ -66,8 +66,8 @@ onMounted(async () => {
   searchWrap.value.style.height = $screenHeight - 100 + 'px';
   showLoadingToast('加载中...');
   const { data } = await getCategory();
-  closeToast()
-  state.categoryData = data
+  closeToast();
+  state.categoryData = data.data
 });
 
 const goHome = () => {

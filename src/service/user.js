@@ -1,11 +1,11 @@
 import axios from '../utils/axios'
 
 export function getUserInfo() {
-  return axios.get('/user/info');
+  return axios.get('/user/getInfo');
 }
 
 export function EditUserInfo(params) {
-  return axios.put('/user/info', params);
+  return axios.post('/user/updateInfo', params);
 }
 
 export function login(params) {

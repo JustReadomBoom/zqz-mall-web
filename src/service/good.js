@@ -5,7 +5,7 @@ export function getDetail(id) {
 }
 
 export function getCategory() {
-  return axios.get('/categories');
+  return axios.get('/category/getData');
 }
 
 export function search(params) {
