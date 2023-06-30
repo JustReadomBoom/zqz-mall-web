@@ -56,9 +56,9 @@ const state = reactive({
 });
 
 const loadData = async () => {
-  const { data, data: { list } } = await getOrderList({ pageNumber: state.page, status: state.status })
-  state.list = state.list.concat(list)
-  state.totalPage = data.totalPage
+  const { data, data: { list } } = await getOrderList({ pageNumber: state.page, status: state.status });
+  state.list = state.list.concat(list);
+  state.totalPage = data.totalPage;
   state.loading = false;
   if (state.page >= data.totalPage) state.finished = true
 };

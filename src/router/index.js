@@ -111,15 +111,7 @@ const router = createRouter({
       meta: {
         index: 2
       }
-    },
-    {
-      path: '/about',
-      name: 'about',
-      component: () => import('@/view/About.vue'),
-      meta: {
-        index: 2
-      }
-    },
+    }
   ]
 });
 

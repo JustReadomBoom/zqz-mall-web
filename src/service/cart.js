@@ -5,7 +5,7 @@ export function addCart(params) {
 }
 
 export function modifyCart(params) {
-  return axios.put('/shop-cart', params);
+  return axios.post('/shoppingCart/updateCartItemNum', params);
 }
 
 export function getCart(params) {
